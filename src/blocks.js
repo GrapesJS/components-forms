@@ -44,10 +44,7 @@ export default function (editor, opt = {}) {
     </svg>
     <div class="gjs-block-label">Input</div>`,
     category: 'Forms',
-    content: {
-      type: 'input',
-      classes: ['input']
-    },
+    content: '<input class="input"/>',
   });
 
   bm.add('textarea', {
@@ -61,45 +58,32 @@ export default function (editor, opt = {}) {
     </svg>
     <div class="gjs-block-label">Textarea</div>`,
     category: 'Forms',
-    content: {
-      type: 'textarea',
-      classes: ['textarea']
-    },
+    content: '<textarea class="textarea"></textarea>',
   });
 
-  bm.add('select-input', {
-    label: blockSelect,
-    attributes: {class:'fa fa-caret-square-o-down'},
+  bm.add('select', {
+    label: `
+    <svg class="gjs-block-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path class="gjs-block-svg-path" d="M22,9 C22,8.4 21.5,8 20.75,8 L3.25,8 C2.5,8 2,8.4 2,9 L2,15 C2,15.6 2.5,16 3.25,16 L20.75,16 C21.5,16 22,15.6 22,15 L22,9 Z M21,15 L3,15 L3,9 L21,9 L21,15 Z" fill-rule="nonzero"></path>
+      <polygon class="gjs-block-svg-path" transform="translate(18.500000, 12.000000) scale(1, -1) translate(-18.500000, -12.000000) " points="18.5 11 20 13 17 13"></polygon>
+      <rect class="gjs-block-svg-path" x="4" y="11.5" width="11" height="1"></rect>
+    </svg>
+    <div class="gjs-block-label">Select</div>`,
     category: 'Forms',
-    content: '<select class="form-control"><option>'+inputSelect+'</option><option value="1">'+inputOpt+' 1</option></select>',
+    content: '<select class="select"><option>'+inputSelect+'</option><option value="1">'+inputOpt+' 1</option></select>',
   });
 
-  bm.add('checkbox-input', {
+  bm.add('checkbox', {
     label: blockCheckbox,
     attributes: {class:'fa fa-check-square'},
     category: 'Forms',
     content: {type: 'checkbox-plus'},
   });
 
-  bm.add('radio-input', {
+  bm.add('radio', {
     label: blockRadio,
     attributes: {class:'fa fa-dot-circle-o'},
     category: 'Forms',
     content: '<div class="form-group form-group-lined"><label class="form-group-radio"><input type="radio"/><span>'+inputRadio+'</span></label></div>',
-  });
-
-  bm.add('switch-input', {
-    label: 'Switch',
-    attributes: {class:'fa fa-toggle-on'},
-    category: 'Forms',
-    content: `
-    <div class="switch" data-gjs-custom-name="Switch">
-        <input type="hidden" name="swt-name" value="0" class="switch-hidden">
-        <input type="checkbox" name="swt-name" class="switch-input" value="1" style="display:none">
-        <i class="switch-track" data-gjs-custom-name="Switch track" data-gjs-droppable="false">
-          <i class="switch-thumb" data-gjs-custom-name="Switch thumb" data-gjs-removable="false" data-gjs-copyable="false" data-gjs-draggable="false"></i>
-        </i>
-        <span class="switch-label"> Label switch </span>
-    </div>`,
   });
 }
