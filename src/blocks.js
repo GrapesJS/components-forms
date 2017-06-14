@@ -77,10 +77,10 @@ export default function (editor, opt = {}) {
   });
 
   bm.add('checkbox', {
-    label: blockCheckbox,
+    label: c.labelCheckboxName,
     attributes: {class:'fa fa-check-square'},
     category: 'Forms',
-    content: {type: 'checkbox-plus'},
+    content: '<input type="checkbox"/>',
   });
 
   bm.add('radio', {

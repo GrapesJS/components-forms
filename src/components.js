@@ -24,17 +24,22 @@ export default function(editor, opt = {}) {
     label: c.labelTraitPlaceholder,
   };
 
+  const valueTrait = {
+    name: 'value',
+    label: c.labelTraitValue,
+  };
+
   const requiredTrait = {
     type: 'checkbox',
     name: 'required',
     label: c.labelTraitRequired,
   };
 
-  const activeTrait = {
-    label: c.labelTraitActive,
+  const checkedTrait = {
+    label: c.labelTraitChecked,
     type: 'checkbox',
-    name: 'active',
-    propChange: 1
+    name: 'checked',
+    changeProp: 1
   };
 
   domc.addType('form', {
@@ -229,6 +234,7 @@ export default function(editor, opt = {}) {
     model: defaultModel.extend({
       defaults: Object.assign({}, inputModel.prototype.defaults, {
         'custom-name': c.labelSelectName,
+        tagName: 'select',
         traits: [
           nameTrait, {
             label: c.labelTraitOptions,
@@ -265,15 +271,36 @@ export default function(editor, opt = {}) {
       defaults: Object.assign({}, inputModel.prototype.defaults, {
         'custom-name': c.labelCheckboxName,
         copyable: false,
+        attributes: {type: 'checkbox'},
         traits: [
           nameTrait,
-          requiredTrait, {
-            label: c.labelTraitChecked,
-            type: 'checkbox',
-            name: 'checked',
-          }
+          valueTrait,
+          requiredTrait,
+          checkedTrait
         ],
       }),
+
+      init() {
+        this.listenTo(this, 'change:checked', this.handleChecked);
+      },
+
+      handleChecked() {
+        let checked = this.get('checked');
+        let attrs = this.get('attributes');
+        const view = this.view;
+
+        if (checked) {
+          attrs.checked = 'checked';
+        } else {
+          delete attrs.checked;
+        }
+
+        if (view) {
+          view.el.checked = checked
+        }
+
+        this.set('attributes', Object.assign({}, attrs));
+      }
     }, {
       isComponent: function(el) {
         if (el.tagName == 'INPUT' && el.type == 'checkbox') {
