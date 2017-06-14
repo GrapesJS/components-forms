@@ -20,6 +20,8 @@ grapesjs.plugins.add('gjs-plugin-forms', (editor, opts) => {
     labelTypeEmail: 'Email',
     labelTypePassword: 'Password',
     labelTypeNumber: 'Number',
+    labelSelectOption: '- Select option -',
+    labelOption: 'Option',
   };
 
   for (let name in defaults) {

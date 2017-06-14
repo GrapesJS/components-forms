@@ -42,7 +42,7 @@ export default function (editor, opt = {}) {
       <path d="M22,9 C22,8.4 21.5,8 20.75,8 L3.25,8 C2.5,8 2,8.4 2,9 L2,15 C2,15.6 2.5,16 3.25,16 L20.75,16 C21.5,16 22,15.6 22,15 L22,9 Z M21,15 L3,15 L3,9 L21,9 L21,15 Z" class="gjs-block-svg-path"></path>
       <polygon points="4 10 5 10 5 14 4 14" class="gjs-block-svg-path"></polygon>
     </svg>
-    <div class="gjs-block-label">Input</div>`,
+    <div class="gjs-block-label">${c.labelInputName}</div>`,
     category: 'Forms',
     content: '<input class="input"/>',
   });
@@ -56,7 +56,7 @@ export default function (editor, opt = {}) {
       <polygon class="gjs-block-svg-path" points="20 8 21 8 21 9 20 9"></polygon>
       <polygon class="gjs-block-svg-path" points="20 15 21 15 21 16 20 16"></polygon>
     </svg>
-    <div class="gjs-block-label">Textarea</div>`,
+    <div class="gjs-block-label">${c.labelTextareaName}</div>`,
     category: 'Forms',
     content: '<textarea class="textarea"></textarea>',
   });
@@ -68,9 +68,12 @@ export default function (editor, opt = {}) {
       <polygon class="gjs-block-svg-path" transform="translate(18.500000, 12.000000) scale(1, -1) translate(-18.500000, -12.000000) " points="18.5 11 20 13 17 13"></polygon>
       <rect class="gjs-block-svg-path" x="4" y="11.5" width="11" height="1"></rect>
     </svg>
-    <div class="gjs-block-label">Select</div>`,
+    <div class="gjs-block-label">${c.labelSelectName}</div>`,
     category: 'Forms',
-    content: '<select class="select"><option>'+inputSelect+'</option><option value="1">'+inputOpt+' 1</option></select>',
+    content: `<select class="select">
+      <option>${c.labelSelectOption}</option>
+      <option value="1">${c.labelOption} 1</option>
+      </select>`,
   });
 
   bm.add('checkbox', {
