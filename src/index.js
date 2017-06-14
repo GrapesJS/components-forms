@@ -10,6 +10,7 @@ grapesjs.plugins.add('gjs-plugin-forms', (editor, opts) => {
     labelSelectName: 'Select',
     labelCheckboxName: 'Checkbox',
     labelRadioName: 'Radio',
+    labelButtonName: 'Button',
     labelTraitName: 'Name',
     labelTraitPlaceholder: 'Placeholder',
     labelTraitValue: 'Value',
@@ -21,6 +22,9 @@ grapesjs.plugins.add('gjs-plugin-forms', (editor, opts) => {
     labelTypeEmail: 'Email',
     labelTypePassword: 'Password',
     labelTypeNumber: 'Number',
+    labelTypeSubmit: 'Submit',
+    labelTypeReset: 'Reset',
+    labelTypeButton: 'Button',
     labelSelectOption: '- Select option -',
     labelOption: 'Option',
   };

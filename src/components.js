@@ -306,7 +306,7 @@ export default function(editor, opt = {}) {
         this.set('attributes', Object.assign({}, attrs));
       }
     }, {
-      isComponent: function(el) {
+      isComponent(el) {
         if (el.tagName == 'INPUT' && el.type == 'checkbox') {
           return {type: 'checkbox'};
         }
@@ -317,7 +317,7 @@ export default function(editor, opt = {}) {
         'click': 'handleClick',
       },
 
-      handleClick: function(e) {
+      handleClick(e) {
         e.preventDefault();
       },
     }),
@@ -333,10 +333,11 @@ export default function(editor, opt = {}) {
   domc.addType('radio', {
      model: checkType.model.extend({
        defaults: Object.assign({}, checkType.model.prototype.defaults, {
-         'custom-name': inputRadio,
+         'custom-name': c.labelRadioName,
+         attributes: {type: 'radio'},
        }),
      }, {
-       isComponent: function(el) {
+       isComponent(el) {
          if(el.tagName == 'INPUT' && el.type == 'radio'){
            return {type: 'radio'};
          }
@@ -350,38 +351,45 @@ export default function(editor, opt = {}) {
 
 
   domc.addType('button', {
-    model: textModel.extend({
-      defaults: Object.assign({}, textModel.prototype.defaults, {
-        'custom-name': 'Button',
-        editable: false,
-        droppable: false,
+    model: defaultModel.extend({
+      defaults: Object.assign({}, inputModel.prototype.defaults, {
+        'custom-name': c.labelButtonName,
+        tagName: 'button',
         traits: [{
           type: 'content',
           label: 'Text',
+        },{
+          label: c.labelTraitType,
+          type: 'select',
+          name: 'type',
+          options: [
+            {value: 'submit', name: c.labelTypeSubmit},
+            {value: 'reset', name: c.labelTypeReset},
+            {value: 'button', name: c.labelTypeButton},
+          ]
         }]
       }),
     }, {
-      isComponent: function(el) {
+      isComponent(el) {
         if(el.tagName == 'BUTTON'){
           return {type: 'button'};
         }
       },
     }),
-    view: textView.extend({
+    view: defaultView.extend({
       events: {
-        'click': 'handleClick',
-        'dblclick': 'enableEditing',
+        'click': 'handleClick'
       },
 
-      init: function() {
+      init() {
         this.listenTo(this.model, 'change:content', this.updateContent);
       },
 
-      updateContent: function() {
-        this.$el.html(this.model.get('content'));
+      updateContent() {
+        this.el.innerHTML = this.model.get('content')
       },
 
-      handleClick: function(e) {
+      handleClick(e) {
         e.preventDefault();
       },
     }),
