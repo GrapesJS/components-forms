@@ -9,6 +9,7 @@ grapesjs.plugins.add('gjs-plugin-forms', (editor, opts) => {
     labelTextareaName: 'Textarea',
     labelSelectName: 'Select',
     labelCheckboxName: 'Checkbox',
+    labelRadioName: 'Radio',
     labelTraitName: 'Name',
     labelTraitPlaceholder: 'Placeholder',
     labelTraitValue: 'Value',

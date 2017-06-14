@@ -42,6 +42,18 @@ export default function(editor, opt = {}) {
     changeProp: 1
   };
 
+  const preventDefaultClick = () => {
+    return defaultType.view.extend({
+      events: {
+        'mousedown': 'handleClick',
+      },
+
+      handleClick(e) {
+        e.preventDefault();
+      },
+    });
+  };
+
   domc.addType('form', {
     model: defaultModel.extend({
       defaults: Object.assign({}, defaultModel.prototype.defaults, {
@@ -250,15 +262,7 @@ export default function(editor, opt = {}) {
         }
       },
     }),
-    view: defaultType.view.extend({
-      events: {
-        'mousedown': 'handleClick',
-      },
-
-      handleClick(e) {
-        e.preventDefault();
-      },
-    }),
+    view: preventDefaultClick(),
   });
 
 

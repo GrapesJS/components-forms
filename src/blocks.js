@@ -84,9 +84,9 @@ export default function (editor, opt = {}) {
   });
 
   bm.add('radio', {
-    label: blockRadio,
+    label: c.labelRadioName,
     attributes: {class:'fa fa-dot-circle-o'},
     category: 'Forms',
-    content: '<div class="form-group form-group-lined"><label class="form-group-radio"><input type="radio"/><span>'+inputRadio+'</span></label></div>',
+    content: '<input type="radio"/>',
   });
 }
