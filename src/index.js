@@ -4,7 +4,8 @@ grapesjs.plugins.add('gjs-plugin-forms', (editor, opts) => {
   let pfx = config.stylePrefix;
 
   let defaults = {
-    blocks: ['form', 'input', 'textarea'],
+    blocks: ['form', 'input', 'textarea', 'select',
+      'button', 'label', 'checkbox', 'radio'],
     labelTraitMethod: 'Method',
     labelTraitAction: 'Action',
     labelTraitState: 'State',
