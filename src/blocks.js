@@ -2,45 +2,45 @@ export default function (editor, opt = {}) {
   const c = opt;
   let bm = editor.BlockManager;
 
-  var blockForm = c.blockForm || 'Form Block';
-  var blockInput = c.blockInput || 'Input';
-  var blockRadio = c.blockRadio || 'Radio Input';
-  var blockCheckbox = c.blockCheckbox || 'Checkbox';
-  var blockSelect = c.blockSelect || 'Select Input';
-  var nameLabel = c.inputName || 'Name';
-  var emailLabel = c.inputEmail || 'Email';
-  var inputText = c.inputText || 'Text here';
-  var inputRadio = c.inputRadio || 'Radio item';
-  var inputCheckbox = c.inputCheckbox || 'Checkbox item';
-  var inputSelect = c.inputSelect || 'Select the option';
-  var inputOpt = c.inputOption || 'Option';
-  var typeYourName = c.typeYourName || 'Type your name';
-  var typeYourEmail = c.typeYourEmail || 'Type your email';
-  var btnSubmit = c.buttonSubmit || 'Submit';
-  var formMsgSuccess = c.formMsgSuccess || 'Thanks! We received your request';
-  var formMsgError = c.formMsgError || 'An error occurred while processing your request, try again!';
-
-  // Forms
+  // FORMS
   bm.add('form', {
-    label: blockForm,
+    label: `
+    <svg class="gjs-block-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path class="gjs-block-svg-path" d="M22,5.5 C22,5.2 21.5,5 20.75,5 L3.25,5 C2.5,5 2,5.2 2,5.5 L2,8.5 C2,8.8 2.5,9 3.25,9 L20.75,9 C21.5,9 22,8.8 22,8.5 L22,5.5 Z M21,8 L3,8 L3,6 L21,6 L21,8 Z" fill-rule="nonzero"></path>
+      <path class="gjs-block-svg-path" d="M22,10.5 C22,10.2 21.5,10 20.75,10 L3.25,10 C2.5,10 2,10.2 2,10.5 L2,13.5 C2,13.8 2.5,14 3.25,14 L20.75,14 C21.5,14 22,13.8 22,13.5 L22,10.5 Z M21,13 L3,13 L3,11 L21,11 L21,13 Z" fill-rule="nonzero"></path>
+      <rect class="gjs-block-svg-path" x="2" y="15" width="10" height="3" rx="0.5"></rect>
+    </svg>
+    <div class="gjs-block-label">${c.labelForm}</div>`,
     category: 'Forms',
-    attributes: {class:'fa fa-list-alt'},
-    content: '<form action="' + c.formServer + '" class="form" data-gjs-custom-name="Form block" method="POST">' +
-      '<input type="hidden" name="userid" value="' + c.userId + '">' +
-      '<input type="hidden" name="pageid" value="' + c.pageId + '">' +
-      '<div class="form-group"><label class="input-label">'+nameLabel+'</label><input placeholder="'+typeYourName+'" class="form-control"></div>' +
-      '<div class="form-group"><label class="input-label">'+emailLabel+'</label><input type="email" placeholder="'+typeYourEmail+'" class="form-control" required="true"></div>' +
-      '<div class="form-group"><button type="submit" class="btn">'+btnSubmit+'</button></div>' +
-      '<div class="alert alert-success" role="alert" data-gjs-form-state-type="success" data-form-state="success" style="display:none">'+formMsgSuccess+'</div>' +
-      '<div class="alert alert-danger" role="alert" data-gjs-form-state-type="error" data-form-state="error" style="display:none">'+formMsgError+'</div>' +
-    '</form>',
+    content: `
+      <form class="form">
+        <div class="form-group">
+          <label class="label">Name</label>
+          <input placeholder="Type here your name" class="input"/>
+        </div>
+        <div class="form-group">
+          <label class="label">Email</label>
+          <input type="email" placeholder="Type here your email" class="input"/>
+        </div>
+        <div class="form-group">
+          <label class="label">Gender</label>
+          <input type="checkbox" class="checkbox" id="chkM" value="M">
+          <label class="checkbox-label" for="chkM">M</label>
+          <input type="checkbox" class="checkbox" id="chkF" value="F">
+          <label class="checkbox-label" for="chkF">F</label>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="button">Send</button>
+        </div>
+      </form>
+    `,
   });
 
   bm.add('input', {
     label: `
     <svg class="gjs-block-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M22,9 C22,8.4 21.5,8 20.75,8 L3.25,8 C2.5,8 2,8.4 2,9 L2,15 C2,15.6 2.5,16 3.25,16 L20.75,16 C21.5,16 22,15.6 22,15 L22,9 Z M21,15 L3,15 L3,9 L21,9 L21,15 Z" class="gjs-block-svg-path"></path>
-      <polygon points="4 10 5 10 5 14 4 14" class="gjs-block-svg-path"></polygon>
+      <path class="gjs-block-svg-path" d="M22,9 C22,8.4 21.5,8 20.75,8 L3.25,8 C2.5,8 2,8.4 2,9 L2,15 C2,15.6 2.5,16 3.25,16 L20.75,16 C21.5,16 22,15.6 22,15 L22,9 Z M21,15 L3,15 L3,9 L21,9 L21,15 Z"></path>
+      <polygon class="gjs-block-svg-path" points="4 10 5 10 5 14 4 14"></polygon>
     </svg>
     <div class="gjs-block-label">${c.labelInputName}</div>`,
     category: 'Forms',
@@ -96,7 +96,7 @@ export default function (editor, opt = {}) {
     </svg>
     <div class="gjs-block-label">${c.labelNameLabel}</div>`,
     category: 'Forms',
-    content: '<label>Label</label>',
+    content: '<label class="label">Label</label>',
   });
 
   bm.add('checkbox', {

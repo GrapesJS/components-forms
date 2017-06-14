@@ -11,8 +11,6 @@ export default function(editor, opt = {}) {
   let stateNormal = 'Normal';
   let stateSuccess = 'Success';
   let stateError = 'Error';
-  let inputCheckbox = 'Checkbox';
-  let inputRadio = 'Radio item';
 
   const idTrait = {
     name: 'id',
@@ -71,26 +69,26 @@ export default function(editor, opt = {}) {
         draggable: ':not(form)',
         traits: [{
           type: 'select',
-          label: c.labelTraitMethod || 'Method',
+          label: c.labelTraitMethod,
           name: 'method',
           options: [
             {value: 'post', name: 'POST'},
             {value: 'get', name: 'GET'},
           ]
         },{
-          label: c.labelTraitAction || 'Action',
+          label: c.labelTraitAction,
           name: 'action',
-        },{
+        }/*,{
           type: 'select',
-          label: c.labelTraitState || 'State',
+          label: c.labelTraitState,
           name: 'formState',
           changeProp: 1,
           options: [
-            {value: '', name: stateNormal},
-            {value: 'success', name: stateSuccess},
-            {value: 'error', name: stateError},
+            {value: '', name: c.labelStateNormal},
+            {value: 'success', name: c.labelStateSuccess},
+            {value: 'error', name: c.labelStateError},
           ]
-        }],
+        }*/],
       }),
 
       init() {
@@ -146,12 +144,11 @@ export default function(editor, opt = {}) {
             break;
           }
         }
-        if(!stateModel) {
+        if (!stateModel) {
           var contentStr = formMsgSuccess;
           if(st == 'error') {
             contentStr = formMsgError;
           }
-          //var index = this.collection.indexOf(this);
           stateModel = comps.add({
             'form-state-type': st,
             type: 'text',
@@ -174,7 +171,7 @@ export default function(editor, opt = {}) {
 
     view: defaultView.extend({
       events: {
-        submit(e){
+        submit(e) {
           e.preventDefault();
         }
       }
