@@ -5,6 +5,8 @@ grapesjs.plugins.add('gjs-plugin-forms', (editor, opts) => {
 
   let defaults = {
     blocks: ['form', 'input', 'textarea'],
+    labelTraitId: 'ID',
+    labelTraitFor: 'For',
     labelInputName: 'Input',
     labelTextareaName: 'Textarea',
     labelSelectName: 'Select',
@@ -25,6 +27,7 @@ grapesjs.plugins.add('gjs-plugin-forms', (editor, opts) => {
     labelTypeSubmit: 'Submit',
     labelTypeReset: 'Reset',
     labelTypeButton: 'Button',
+    labelNameLabel: 'Label',
     labelSelectOption: '- Select option -',
     labelOption: 'Option',
   };

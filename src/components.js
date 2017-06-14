@@ -14,6 +14,16 @@ export default function(editor, opt = {}) {
   let inputCheckbox = 'Checkbox';
   let inputRadio = 'Radio item';
 
+  const idTrait = {
+    name: 'id',
+    label: c.labelTraitId,
+  };
+
+  const forTrait = {
+    name: 'for',
+    label: c.labelTraitFor,
+  };
+
   const nameTrait = {
     name: 'name',
     label: c.labelTraitName,
@@ -277,6 +287,7 @@ export default function(editor, opt = {}) {
         copyable: false,
         attributes: {type: 'checkbox'},
         traits: [
+          idTrait,
           nameTrait,
           valueTrait,
           requiredTrait,
@@ -393,5 +404,27 @@ export default function(editor, opt = {}) {
         e.preventDefault();
       },
     }),
+  });
+
+
+
+
+
+  // LABEL
+  domc.addType('label', {
+    model: textModel.extend({
+      defaults: Object.assign({}, textModel.prototype.defaults, {
+        'custom-name': c.labelNameLabel,
+        tagName: 'label',
+        traits: [forTrait],
+      }),
+    }, {
+      isComponent(el) {
+        if(el.tagName == 'LABEL'){
+          return {type: 'label'};
+        }
+      },
+    }),
+    view: textView,
   });
 }
