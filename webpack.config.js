@@ -4,7 +4,7 @@ var env = process.env.WEBPACK_ENV;
 var name = 'grapesjs-plugin-forms';
 var plugins = [];
 
-if(env !== 'dev'){
+if(env !== 'dev') {
   plugins = [
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,

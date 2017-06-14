@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-plugin-forms",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "description": "GrapesJS set of components and blocks to work with forms",
   "main": "dist/grapesjs-plugin-forms.min.js",
@@ -13,7 +13,7 @@
   "keywords": [
     "grapesjs",
     "plugin",
-    "forms",
+    "form",
     "builder"
   ],
   "author": "Artur Arseniev",
