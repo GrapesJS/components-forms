@@ -54,7 +54,7 @@ New components:
 
 ## Download
 
-* `npm i grapesjs-mjml` or `yarn add grapesjs-mjml`
+* `npm i grapesjs-plugin-forms` or `yarn add grapesjs-plugin-forms`
 
 
 
