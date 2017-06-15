@@ -29,12 +29,15 @@
       <form action="index.html" method="post" style="padding: 50px;">
         <input type="hidden" name="hidden-input" value="someval">
         <div class="row">
+          <label>Name</label>
           <input type="text" name="text-input" value="">
         </div>
         <div class="row">
+          <label>Messagge</label>
           <textarea name="textarea-input"></textarea>
         </div>
         <div class="row">
+          <label>Options</label>
           <select name="select-input">
             <option value="">- Select -</option>
             <option value="1">Value 1</option>
@@ -51,24 +54,6 @@
           <input type="radio" name="radio-input" value="3"> 3
         </div>
         <button type="button" name="button-name">Send</button>
-
-        <!-- switch -->
-        <div class="switch" data-gjs-custom-name="Switch">
-            <input type="hidden" name="swt-name" value="0" class="switch-hidden">
-            <input type="checkbox" name="swt-name" class="switch-input" value="1" style="display:none">
-            <i class="switch-track" data-gjs-custom-name="Switch track" data-gjs-droppable="false">
-              <i class="switch-thumb" data-gjs-custom-name="Switch thumb" data-gjs-removable="false" data-gjs-copyable="false" data-gjs-draggable="false"></i>
-            </i>
-            <span class="switch-label">Label switch</span>
-        </div>
-
-        <div class="checkbox">
-            <input type="checkbox" class="checkbox-input" value="5" style="display:none">
-            <i class="checkbox-box" data-gjs-droppable="false">
-              <i class="checkbox-tick" data-gjs-custom-name="Tick" data-gjs-removable="false" data-gjs-copyable="false" data-gjs-draggable="false"></i>
-            </i>
-            <span class="checkbox-label">Label checkbox</span>
-        </div>
       </form>
       <style>
       </style>
