@@ -24,10 +24,10 @@ export default function (editor, opt = {}) {
           </div>
           <div class="form-group">
             <label class="label">Gender</label>
-            <input type="checkbox" class="checkbox" id="chkM" value="M">
-            <label class="checkbox-label" for="chkM">M</label>
-            <input type="checkbox" class="checkbox" id="chkF" value="F">
-            <label class="checkbox-label" for="chkF">F</label>
+            <input type="checkbox" class="checkbox" value="M">
+            <label class="checkbox-label">M</label>
+            <input type="checkbox" class="checkbox" value="F">
+            <label class="checkbox-label">F</label>
           </div>
           <div class="form-group">
             <button type="submit" class="button">Send</button>
