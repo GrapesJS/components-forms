@@ -30,6 +30,10 @@ export default function (editor, opt = {}) {
             <label class="checkbox-label">F</label>
           </div>
           <div class="form-group">
+            <label class="label">Message</label>
+            <textarea class="textarea"></textarea>
+          </div>
+          <div class="form-group">
             <button type="submit" class="button">Send</button>
           </div>
         </form>
