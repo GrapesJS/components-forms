@@ -29,6 +29,7 @@ module.exports = {
       libraryTarget: 'umd',
   },
   plugins: plugins,
+  externals: {'grapesjs': 'grapesjs'},
   module: {
     loaders: [{
         test: /\.js$/,
