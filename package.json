@@ -3,6 +3,10 @@
   "version": "0.2.5",
   "description": "Set of forms components and blocks for GrapesJS editor",
   "main": "dist/grapesjs-plugin-forms.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artf/grapesjs-plugin-forms.git"
+  },
   "scripts": {
     "lint": "eslint src",
     "build": "WEBPACK_ENV=prod && npm run v:patch && webpack",
@@ -17,14 +21,30 @@
   ],
   "author": "Artur Arseniev",
   "license": "BSD-3-Clause",
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": [
+            "> 1%",
+            "ie 11",
+            "safari 8"
+          ],
+          "useBuiltIns": true
+        }
+      ]
+    ]
+  },
+  "peerDependencies": {
+    "grapesjs": "0.x"
+  },
   "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.0.0",
-    "babel-preset-es2015": "^6.24.1",
-    "grapesjs": "^0.8.4",
-    "jquery": "^3.2.1",
-    "node-sass": "^4.5.3",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
   }
 }

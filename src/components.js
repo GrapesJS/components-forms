@@ -124,12 +124,12 @@ export default function(editor, opt = {}) {
         }
         var successModel = this.getStateModel('success');
         var failModel = this.getStateModel('error');
-        var successStyle = _.clone(successModel.get('style'));
-        var failStyle = _.clone(failModel.get('style'));
+        var successStyle = successModel.getStyle();
+        var failStyle = failModel.getStyle();
         successStyle.display = successVis;
         failStyle.display = failVis;
-        successModel.set('style', successStyle);
-        failModel.set('style', failStyle);
+        successModel.setStyle(successStyle);
+        failModel.setStyle(failStyle);
       },
 
       getStateModel(state) {
