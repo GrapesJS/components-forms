@@ -32,6 +32,7 @@ export default function (editor, opt = {}) {
       var optionsStr = this.model.get('value').trim();
       var options = optionsStr.split('\n');
       var optComps = [];
+
       for (var i = 0; i < options.length; i++) {
         var optionStr = options[i];
         var option = optionStr.split('::');
@@ -48,29 +49,32 @@ export default function (editor, opt = {}) {
         }
         optComps.push(opt);
       }
+
       var comps = this.target.get('components');
       comps.reset(optComps);
       this.target.view.render();
     },
 
     getInputEl: function() {
-      if(!this.$input) {
+      if (!this.$input) {
         var md = this.model;
         var trg = this.target;
         var name = md.get('name');
         var optionsStr = '';
         var opts = {placeholder: ''};
         var options = trg.get('components');
+
         for (var i = 0; i < options.length; i++) {
           var option = options.models[i];
           var optAttr = option.get('attributes');
           var optValue = optAttr.value || '';
-          optionsStr += optValue + (optValue ? '::' : '') + option.get('content') + '\n';
+          optionsStr += `${optValue}::${option.get('content')}\n`;
         }
-        this.$input = $('<textarea>', opts);
-        this.$input.val(optionsStr);
+
+        this.$input = document.createElement('textarea');
+        this.$input.value = optionsStr;
       }
-      return this.$input.get(0);
+      return this.$input;
   	},
   });
 }

@@ -81,7 +81,7 @@ export default function (editor, opt = {}) {
       <div class="gjs-block-label">${c.labelSelectName}</div>`,
       category: 'Forms',
       content: `<select class="select">
-        <option>${c.labelSelectOption}</option>
+        ${c.labelSelectOption ? `<option value="">${c.labelSelectOption}</option>` : ''}
         <option value="1">${c.labelOption} 1</option>
         </select>`,
     });
