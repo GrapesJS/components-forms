@@ -9,9 +9,9 @@
   },
   "scripts": {
     "lint": "eslint src",
-    "build": "WEBPACK_ENV=prod && npm run v:patch && webpack",
+    "build": "npm run v:patch && webpack --env.production",
     "v:patch": "npm version --no-git-tag-version patch",
-    "start": "WEBPACK_ENV=dev ./node_modules/.bin/webpack-dev-server --progress --colors"
+    "start": "webpack-dev-server --open --progress --colors"
   },
   "keywords": [
     "grapesjs",
@@ -23,17 +23,7 @@
   "license": "BSD-3-Clause",
   "babel": {
     "presets": [
-      [
-        "env",
-        {
-          "targets": [
-            "> 1%",
-            "ie 11",
-            "safari 8"
-          ],
-          "useBuiltIns": true
-        }
-      ]
+      "env"
     ],
     "plugins": [
       "transform-object-rest-spread"
@@ -48,6 +38,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
+    "eslint": "^4.1.1",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
   }
