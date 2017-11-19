@@ -1,7 +1,6 @@
-import gjs from 'grapesjs';
-const g = grapesjs || gjs;
+import grapesjs from 'grapesjs';
 
-export default g.plugins.add('gjs-plugin-forms', (editor, opts) => {
+export default grapesjs.plugins.add('gjs-plugin-forms', (editor, opts) => {
   let c = opts || {};
   let config = editor.getConfig();
   let pfx = config.stylePrefix;
