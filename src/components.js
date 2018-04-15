@@ -316,7 +316,7 @@ export default function(editor, opt = {}) {
           view.el.checked = checked
         }
 
-        this.set('attributes', Object.assign({}, attrs));
+        this.set('attributes', { ...attrs });
       }
     }, {
       isComponent(el) {
