@@ -64,7 +64,8 @@ export default function(editor, opt = {}) {
 
   domc.addType('form', {
     model: defaultModel.extend({
-      defaults: Object.assign({}, defaultModel.prototype.defaults, {
+      defaults: {
+        ...defaultModel.prototype.defaults,
         droppable: ':not(form)',
         draggable: ':not(form)',
         traits: [{
@@ -89,7 +90,7 @@ export default function(editor, opt = {}) {
             {value: 'error', name: c.labelStateError},
           ]
         }*/],
-      }),
+      },
 
       init() {
         this.listenTo(this, 'change:formState', this.updateFormState);
@@ -185,7 +186,8 @@ export default function(editor, opt = {}) {
   // INPUT
   domc.addType('input', {
     model: defaultModel.extend({
-      defaults: Object.assign({}, defaultModel.prototype.defaults, {
+      defaults: {
+        ...defaultModel.prototype.defaults,
         'custom-name': c.labelInputName,
         tagName: 'input',
         draggable: 'form, form *',
@@ -204,7 +206,7 @@ export default function(editor, opt = {}) {
             ]
           }, requiredTrait
         ],
-      }),
+      },
     }, {
       isComponent(el) {
         if(el.tagName == 'INPUT') {
@@ -225,7 +227,8 @@ export default function(editor, opt = {}) {
   // TEXTAREA
   domc.addType('textarea', {
     model: inputType.model.extend({
-      defaults: Object.assign({}, inputModel.prototype.defaults, {
+      defaults: {
+        ...inputModel.prototype.defaults,
         'custom-name': c.labelTextareaName,
         tagName: 'textarea',
         traits: [
@@ -233,7 +236,7 @@ export default function(editor, opt = {}) {
           placeholderTrait,
           requiredTrait
         ]
-      }),
+      },
     }, {
       isComponent(el) {
         if(el.tagName == 'TEXTAREA'){
@@ -251,7 +254,8 @@ export default function(editor, opt = {}) {
   // SELECT
   domc.addType('select', {
     model: defaultModel.extend({
-      defaults: Object.assign({}, inputModel.prototype.defaults, {
+      defaults: {
+        ...inputModel.prototype.defaults,
         'custom-name': c.labelSelectName,
         tagName: 'select',
         traits: [
@@ -261,7 +265,7 @@ export default function(editor, opt = {}) {
           },
           requiredTrait
         ],
-      }),
+      },
     }, {
       isComponent(el) {
         if(el.tagName == 'SELECT'){
@@ -279,7 +283,8 @@ export default function(editor, opt = {}) {
   // CHECKBOX
   domc.addType('checkbox', {
     model: defaultModel.extend({
-      defaults: Object.assign({}, inputModel.prototype.defaults, {
+      defaults: {
+        ...inputModel.prototype.defaults,
         'custom-name': c.labelCheckboxName,
         copyable: false,
         attributes: {type: 'checkbox'},
@@ -290,7 +295,7 @@ export default function(editor, opt = {}) {
           requiredTrait,
           checkedTrait
         ],
-      }),
+      },
 
       init() {
         this.listenTo(this, 'change:checked', this.handleChecked);
@@ -340,10 +345,11 @@ export default function(editor, opt = {}) {
   // RADIO
   domc.addType('radio', {
      model: checkType.model.extend({
-       defaults: Object.assign({}, checkType.model.prototype.defaults, {
+       defaults: {
+         ...checkType.model.prototype.defaults,
          'custom-name': c.labelRadioName,
          attributes: {type: 'radio'},
-       }),
+       },
      }, {
        isComponent(el) {
          if(el.tagName == 'INPUT' && el.type == 'radio'){
@@ -360,7 +366,8 @@ export default function(editor, opt = {}) {
 
   domc.addType('button', {
     model: defaultModel.extend({
-      defaults: Object.assign({}, inputModel.prototype.defaults, {
+      defaults: {
+        ...inputModel.prototype.defaults,
         'custom-name': c.labelButtonName,
         tagName: 'button',
         traits: [{
@@ -376,7 +383,7 @@ export default function(editor, opt = {}) {
             {value: 'button', name: c.labelTypeButton},
           ]
         }]
-      }),
+      },
     }, {
       isComponent(el) {
         if(el.tagName == 'BUTTON'){
@@ -410,11 +417,12 @@ export default function(editor, opt = {}) {
   // LABEL
   domc.addType('label', {
     model: textModel.extend({
-      defaults: Object.assign({}, textModel.prototype.defaults, {
+      defaults: {
+        ...textModel.prototype.defaults,
         'custom-name': c.labelNameLabel,
         tagName: 'label',
         traits: [forTrait],
-      }),
+      },
     }, {
       isComponent(el) {
         if(el.tagName == 'LABEL'){
