@@ -307,7 +307,7 @@ export default function(editor, opt = {}) {
         const view = this.view;
 
         if (checked) {
-          attrs.checked = 'checked';
+          attrs.checked = true;
         } else {
           delete attrs.checked;
         }
