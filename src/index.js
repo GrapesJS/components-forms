@@ -1,11 +1,10 @@
-import grapesjs from 'grapesjs';
+import loadTraits from './traits';
+import loadBlocks from './blocks';
+import loadComponents from './components';
 
-export default grapesjs.plugins.add('gjs-plugin-forms', (editor, opts) => {
-  let c = opts || {};
-  let config = editor.getConfig();
-  let pfx = config.stylePrefix;
+export default (editor, opts = {}) => {
 
-  let defaults = {
+  const config = {
     blocks: ['form', 'input', 'textarea', 'select',
       'button', 'label', 'checkbox', 'radio'],
     labelTraitMethod: 'Method',
@@ -40,22 +39,10 @@ export default grapesjs.plugins.add('gjs-plugin-forms', (editor, opts) => {
     labelStateNormal: 'Normal',
     labelStateSuccess: 'Success',
     labelStateError: 'Error',
+    ...opts
   };
 
-  for (let name in defaults) {
-    if (!(name in c))
-      c[name] = defaults[name];
-  }
-
-  // Add components
-  let loadComponents = require('./components');
-  loadComponents.default(editor, c);
-
-  // Add traits
-  require('./traits').default(editor, c);
-
-  // Add blocks
-  let loadBlocks = require('./blocks');
-  loadBlocks.default(editor, c);
-
-});
+  loadComponents(editor, config);
+  loadTraits(editor, config);
+  loadBlocks(editor, config);
+};
