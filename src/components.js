@@ -47,7 +47,6 @@ export default function(editor, opt = {}) {
     label: c.labelTraitChecked,
     type: 'checkbox',
     name: 'checked',
-    changeProp: 1
   };
 
   const preventDefaultClick = () => {
@@ -188,7 +187,7 @@ export default function(editor, opt = {}) {
     model: defaultModel.extend({
       defaults: {
         ...defaultModel.prototype.defaults,
-        'custom-name': c.labelInputName,
+        name: c.labelInputName,
         tagName: 'input',
         draggable: 'form, form *',
         droppable: false,
@@ -229,7 +228,7 @@ export default function(editor, opt = {}) {
     model: inputType.model.extend({
       defaults: {
         ...inputModel.prototype.defaults,
-        'custom-name': c.labelTextareaName,
+        name: c.labelTextareaName,
         tagName: 'textarea',
         traits: [
           nameTrait,
@@ -256,7 +255,7 @@ export default function(editor, opt = {}) {
     model: defaultModel.extend({
       defaults: {
         ...inputModel.prototype.defaults,
-        'custom-name': c.labelSelectName,
+        name: c.labelSelectName,
         tagName: 'select',
         traits: [
           nameTrait, {
@@ -285,7 +284,7 @@ export default function(editor, opt = {}) {
     model: defaultModel.extend({
       defaults: {
         ...inputModel.prototype.defaults,
-        'custom-name': c.labelCheckboxName,
+        name: c.labelCheckboxName,
         copyable: false,
         attributes: {type: 'checkbox'},
         traits: [
@@ -297,31 +296,10 @@ export default function(editor, opt = {}) {
         ],
       },
 
-      init() {
-        this.listenTo(this, 'change:checked', this.handleChecked);
-      },
-
-      handleChecked() {
-        let checked = this.get('checked');
-        let attrs = this.get('attributes');
-        const view = this.view;
-
-        if (checked) {
-          attrs.checked = true;
-        } else {
-          delete attrs.checked;
-        }
-
-        if (view) {
-          view.el.checked = checked
-        }
-
-        this.set('attributes', { ...attrs });
-      }
     }, {
       isComponent(el) {
         if (el.tagName == 'INPUT' && el.type == 'checkbox') {
-          return {type: 'checkbox'};
+          return { type: 'checkbox' };
         }
       },
     }),
@@ -332,6 +310,14 @@ export default function(editor, opt = {}) {
 
       handleClick(e) {
         e.preventDefault();
+      },
+
+      init() {
+        this.listenTo(this.model, 'change:attributes:checked', this.handleChecked);
+      },
+
+      handleChecked() {
+        this.el.checked = !!this.model.get('attributes').checked;
       },
     }),
   });
@@ -347,7 +333,7 @@ export default function(editor, opt = {}) {
      model: checkType.model.extend({
        defaults: {
          ...checkType.model.prototype.defaults,
-         'custom-name': c.labelRadioName,
+         name: c.labelRadioName,
          attributes: {type: 'radio'},
        },
      }, {
@@ -368,7 +354,7 @@ export default function(editor, opt = {}) {
     model: defaultModel.extend({
       defaults: {
         ...inputModel.prototype.defaults,
-        'custom-name': c.labelButtonName,
+        name: c.labelButtonName,
         tagName: 'button',
         traits: [{
           type: 'content',
@@ -419,7 +405,7 @@ export default function(editor, opt = {}) {
     model: textModel.extend({
       defaults: {
         ...textModel.prototype.defaults,
-        'custom-name': c.labelNameLabel,
+        name: c.labelNameLabel,
         tagName: 'label',
         traits: [forTrait],
       },

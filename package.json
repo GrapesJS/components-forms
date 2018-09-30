@@ -1,8 +1,9 @@
 {
   "name": "grapesjs-plugin-forms",
-  "version": "0.3.6",
+  "version": "0.3.11",
   "description": "Set of forms components and blocks for GrapesJS editor",
   "main": "dist/grapesjs-plugin-forms.min.js",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/artf/grapesjs-plugin-forms.git"
@@ -23,23 +24,22 @@
   "license": "BSD-3-Clause",
   "babel": {
     "presets": [
-      "env"
+      "@babel/preset-env"
     ],
     "plugins": [
-      "transform-object-rest-spread"
+      "@babel/plugin-transform-runtime"
     ]
   },
-  "peerDependencies": {
-    "grapesjs": "0.x"
-  },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "html-webpack-plugin": "^2.30.1",
-    "eslint": "^4.1.1",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4"
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/runtime": "^7.1.2",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.6.1",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
   }
 }

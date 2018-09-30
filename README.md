@@ -60,6 +60,8 @@ New components:
 
 ## Usage
 
+Directly in the browser
+
 ```html
 <link href="path/to/grapes.min.css" rel="stylesheet"/>
 <script src="path/to/grapes.min.js"></script>
@@ -71,12 +73,32 @@ New components:
   var editor = grapesjs.init({
       fromElement: 1,
       container : '#gjs',
-      plugins: ['gjs-plugin-forms'],
+      plugins: ['grapesjs-plugin-forms'],
       pluginsOpts: {
-        'gjs-plugin-forms': {/* ...options */}
+        'grapesjs-plugin-forms': {/* ...options */}
       }
   });
 </script>
+```
+
+Modern javascript
+
+```js
+import grapesjs from 'grapesjs';
+import gjsForms from 'grapesjs-plugin-forms';
+
+const editor = grapesjs.init({
+  container : '#gjs',
+  // ...
+  plugins: [gjsForms],
+  pluginsOpts: {
+    [gjsForms]: { /* options */ }
+  }
+  // or
+  plugins: [
+    editor => gjsForms(editor, { /* options */ }),
+  ],
+});
 ```
 
 
@@ -94,12 +116,6 @@ Install it
 
 ```sh
 $ npm i
-```
-
-The plugin relies on GrapesJS via `peerDependencies` so you have to install it manually (without adding it to package.json)
-
-```sh
-$ npm i grapesjs --no-save
 ```
 
 Start the dev server
