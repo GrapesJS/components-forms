@@ -11,7 +11,7 @@ export default function (editor, opt = {}) {
         <rect class="gjs-block-svg-path" x="2" y="15" width="10" height="3" rx="0.5"></rect>
       </svg>
       <div class="gjs-block-label">${c.labelForm}</div>`,
-      category: 'Forms',
+      category: c.category,
       content: `
         <form class="form">
           <div class="form-group">
@@ -49,7 +49,7 @@ export default function (editor, opt = {}) {
         <polygon class="gjs-block-svg-path" points="4 10 5 10 5 14 4 14"></polygon>
       </svg>
       <div class="gjs-block-label">${c.labelInputName}</div>`,
-      category: 'Forms',
+      category: c.category,
       content: '<input class="input"/>',
     });
   }
@@ -65,7 +65,7 @@ export default function (editor, opt = {}) {
         <polygon class="gjs-block-svg-path" points="20 15 21 15 21 16 20 16"></polygon>
       </svg>
       <div class="gjs-block-label">${c.labelTextareaName}</div>`,
-      category: 'Forms',
+      category: c.category,
       content: '<textarea class="textarea"></textarea>',
     });
   }
@@ -79,7 +79,7 @@ export default function (editor, opt = {}) {
         <rect class="gjs-block-svg-path" x="4" y="11.5" width="11" height="1"></rect>
       </svg>
       <div class="gjs-block-label">${c.labelSelectName}</div>`,
-      category: 'Forms',
+      category: c.category,
       content: `<select class="select">
         ${c.labelSelectOption ? `<option value="">${c.labelSelectOption}</option>` : ''}
         <option value="1">${c.labelOption} 1</option>
@@ -95,7 +95,7 @@ export default function (editor, opt = {}) {
         <rect class="gjs-block-svg-path" x="4" y="11.5" width="16" height="1"></rect>
       </svg>
       <div class="gjs-block-label">${c.labelButtonName}</div>`,
-      category: 'Forms',
+      category: c.category,
       content: '<button class="button">Send</button>',
     });
   }
@@ -109,7 +109,7 @@ export default function (editor, opt = {}) {
         <polygon class="gjs-block-svg-path" fill-rule="nonzero" points="4 13 5 13 5 16 4 16"></polygon>
       </svg>
       <div class="gjs-block-label">${c.labelNameLabel}</div>`,
-      category: 'Forms',
+      category: c.category,
       content: '<label class="label">Label</label>',
     });
   }
@@ -118,7 +118,7 @@ export default function (editor, opt = {}) {
     bm.add('checkbox', {
       label: c.labelCheckboxName,
       attributes: {class:'fa fa-check-square'},
-      category: 'Forms',
+      category: c.category,
       content: '<input type="checkbox" class="checkbox"/>',
     });
   }
@@ -127,7 +127,7 @@ export default function (editor, opt = {}) {
     bm.add('radio', {
       label: c.labelRadioName,
       attributes: {class:'fa fa-dot-circle-o'},
-      category: 'Forms',
+      category: c.category,
       content: '<input type="radio" class="radio"/>',
     });
   }
