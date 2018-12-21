@@ -49,6 +49,7 @@ New components:
 * `labelForm` Form type label, default: 'Form',
 * `labelSelectOption` Select option type label, default: '- Select option -',
 * `labelOption` Option label, default: 'Option'
+* `category` Category label, default: 'Forms'
 
 
 
