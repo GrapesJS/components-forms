@@ -72,9 +72,9 @@ export default function(editor, opt = {}) {
           label: c.labelTraitMethod,
           name: 'method',
           options: [
-            {value: 'post', name: 'POST'},
             {value: 'get', name: 'GET'},
-          ]
+            {value: 'post', name: 'POST'},
+          ],
         },{
           label: c.labelTraitAction,
           name: 'action',
