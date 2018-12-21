@@ -39,6 +39,7 @@ export default (editor, opts = {}) => {
     labelStateNormal: 'Normal',
     labelStateSuccess: 'Success',
     labelStateError: 'Error',
+    category: 'Forms',
     ...opts
   };
 
