@@ -54,7 +54,12 @@ New components:
 
 ## Download
 
-* `npm i grapesjs-plugin-forms`
+* CDN
+  * `https://unpkg.com/grapesjs-plugin-forms`
+* NPM
+  * `npm i grapesjs-plugin-forms`
+* GIT
+  * `git clone https://github.com/artf/grapesjs-plugin-forms.git`
 
 
 
