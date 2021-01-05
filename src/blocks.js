@@ -27,7 +27,7 @@ export default function (editor, opt = {}) {
         {
           components: [
             { type: typeLabel, components: 'Name' },
-            { type: typeInput, attributes: { type: 'text' } },
+            { type: typeInput },
           ]
         }, {
           components: [

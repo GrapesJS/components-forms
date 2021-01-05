@@ -48,6 +48,7 @@ export default function(editor, opt = {}) {
         tagName: 'form',
         droppable: ':not(form)',
         draggable: ':not(form)',
+        attributes: { method: 'get' },
         traits: [{
           type: 'select',
           name: 'method',
@@ -82,6 +83,7 @@ export default function(editor, opt = {}) {
         draggable: 'form, form *',
         droppable: false,
         highlightable: false,
+        attributes: { type: 'text' },
         traits: [
           nameTrait,
           placeholderTrait,
@@ -120,6 +122,7 @@ export default function(editor, opt = {}) {
     model: {
       defaults: {
         tagName: 'textarea',
+        attributes: {},
         traits: [
           nameTrait,
           placeholderTrait,
@@ -224,6 +227,7 @@ export default function(editor, opt = {}) {
     model: {
       defaults: {
         tagName: 'button',
+        attributes: { type: 'button' },
         text: 'Send',
         traits: [
           {
@@ -233,9 +237,9 @@ export default function(editor, opt = {}) {
             type: 'select',
             name: 'type',
             options: [
+              { value: 'button' },
               { value: 'submit' },
               { value: 'reset' },
-              { value: 'button' },
             ]
         }]
       },
