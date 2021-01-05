@@ -146,9 +146,12 @@ export default function(editor, opt = {}) {
         tagName: 'option',
         layerable: false,
         droppable: false,
+        draggable: false,
+        highlightable: false,
       },
     },
   });
+
   const createOption = (value, name) => ({ type: typeOption, components: name, attributes: { value } });
 
 
