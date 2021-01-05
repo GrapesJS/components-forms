@@ -1,5 +1,4 @@
 export default function(editor, opt = {}) {
-  const c = opt;
   const domc = editor.DomComponents;
   const typeForm = 'form';
   const typeInput = 'input';
@@ -12,49 +11,32 @@ export default function(editor, opt = {}) {
 
   const idTrait = {
     name: 'id',
-    label: c.labelTraitId,
   };
 
   const forTrait = {
     name: 'for',
-    label: c.labelTraitFor,
   };
 
   const nameTrait = {
     name: 'name',
-    label: c.labelTraitName,
   };
 
   const placeholderTrait = {
     name: 'placeholder',
-    label: c.labelTraitPlaceholder,
   };
 
   const valueTrait = {
     name: 'value',
-    label: c.labelTraitValue,
   };
 
   const requiredTrait = {
     type: 'checkbox',
     name: 'required',
-    label: c.labelTraitRequired,
   };
 
   const checkedTrait = {
-    label: c.labelTraitChecked,
     type: 'checkbox',
     name: 'checked',
-  };
-
-  const viewNoDefClick = {
-    events: {
-      'mousedown': 'handleClick',
-    },
-
-    handleClick(e) {
-      e.preventDefault();
-    },
   };
 
   domc.addType(typeForm, {
@@ -66,14 +48,12 @@ export default function(editor, opt = {}) {
         draggable: ':not(form)',
         traits: [{
           type: 'select',
-          label: c.labelTraitMethod,
           name: 'method',
           options: [
             {value: 'get', name: 'GET'},
             {value: 'post', name: 'POST'},
           ],
         }, {
-          label: c.labelTraitAction,
           name: 'action',
         }],
       },
@@ -96,7 +76,6 @@ export default function(editor, opt = {}) {
 
     model: {
       defaults: {
-        name: c.labelInputName,
         tagName: 'input',
         draggable: 'form, form *',
         droppable: false,
@@ -104,14 +83,13 @@ export default function(editor, opt = {}) {
           nameTrait,
           placeholderTrait,
           {
-            label: c.labelTraitType,
             type: 'select',
             name: 'type',
             options: [
-              {value: 'text', name: c.labelTypeText},
-              {value: 'email', name: c.labelTypeEmail},
-              {value: 'password', name: c.labelTypePassword},
-              {value: 'number', name: c.labelTypeNumber},
+              { value: 'text' },
+              { value: 'email' },
+              { value: 'password' },
+              { value: 'number' },
             ]
           },
           requiredTrait
@@ -138,7 +116,6 @@ export default function(editor, opt = {}) {
 
     model: {
       defaults: {
-        name: c.labelTextareaName,
         tagName: 'textarea',
         traits: [
           nameTrait,
@@ -160,12 +137,11 @@ export default function(editor, opt = {}) {
 
     model: {
       defaults: {
-        name: c.labelSelectName,
         tagName: 'select',
         traits: [
           nameTrait,
           {
-            label: c.labelTraitOptions,
+            name: 'options',
             type: 'select-options'
           },
           requiredTrait
@@ -173,7 +149,11 @@ export default function(editor, opt = {}) {
       },
     },
 
-    view: viewNoDefClick,
+    view: {
+      events: {
+        mousedown: e => e.preventDefault(),
+      },
+    },
   });
 
 
@@ -187,7 +167,6 @@ export default function(editor, opt = {}) {
 
     model: {
       defaults: {
-        name: c.labelCheckboxName,
         copyable: false,
         attributes: { type: 'checkbox' },
         traits: [
@@ -226,7 +205,6 @@ export default function(editor, opt = {}) {
 
     model: {
       defaults: {
-        name: c.labelRadioName,
         attributes: { type: 'radio' },
       },
     },
@@ -242,21 +220,20 @@ export default function(editor, opt = {}) {
 
     model: {
       defaults: {
-        name: c.labelButtonName,
         tagName: 'button',
         text: '',
-        traits: [{
-          name: 'text',
-          changeProp: true,
-        },{
-          label: c.labelTraitType,
-          type: 'select',
-          name: 'type',
-          options: [
-            {value: 'submit', name: c.labelTypeSubmit},
-            {value: 'reset', name: c.labelTypeReset},
-            {value: 'button', name: c.labelTypeButton},
-          ]
+        traits: [
+          {
+            name: 'text',
+            changeProp: true,
+          }, {
+            type: 'select',
+            name: 'type',
+            options: [
+              { value: 'submit' },
+              { value: 'reset' },
+              { value: 'button' },
+            ]
         }]
       },
 
@@ -291,7 +268,6 @@ export default function(editor, opt = {}) {
 
     model: {
       defaults: {
-        name: c.labelNameLabel,
         tagName: 'label',
         traits: [forTrait],
       },
