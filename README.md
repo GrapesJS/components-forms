@@ -5,7 +5,7 @@ This plugin adds some of the basic form components and blocks which help in work
 [Demo](http://grapesjs.com/demo.html)
 <br/>
 
-New components:
+Available components:
 `form`
 `input`
 `textarea`
@@ -20,37 +20,7 @@ New components:
 
 ## Options
 
-* `blocks` Which blocks to add, default: `['form', 'input', 'textarea', 'select', 'button', 'label', 'checkbox', 'radio']` (all),
-* `labelTraitMethod` Method trait label, default: 'Method',
-* `labelTraitAction` Action trait label, default: 'Action',
-* `labelTraitState` State trait label,  default: 'State',
-* `labelTraitId` ID trait label, default: 'ID',
-* `labelTraitFor` For trait label, default: 'For',
-* `labelInputName` Input name label, default: 'Input',
-* `labelTextareaName` Textarea name label, default: 'Textarea',
-* `labelSelectName` Select name label, default: 'Select',
-* `labelCheckboxName` Checkbox name label, default: 'Checkbox',
-* `labelRadioName` Radio name label, default: 'Radio',
-* `labelButtonName` Button name label, default: 'Button',
-* `labelTraitName` Name trait label, default: 'Name',
-* `labelTraitPlaceholder` Placeholder trait label, default: 'Placeholder',
-* `labelTraitValue` Value trait label, default: 'Value',
-* `labelTraitRequired` Required trait label, default: 'Required',
-* `labelTraitType` Type trait label, default: 'Type',
-* `labelTraitOptions` Options trait label, default: 'Options',
-* `labelTraitChecked` Checked trait label, default: 'Checked',
-* `labelTypeText` Text type label, default: 'Text',
-* `labelTypeEmail` Email type label, default: 'Email',
-* `labelTypePassword` Password type label, default: 'Password',
-* `labelTypeNumber` Number type label, default: 'Number',
-* `labelTypeSubmit` Submit type label, default: 'Submit',
-* `labelTypeReset` Reset type label, default: 'Reset',
-* `labelTypeButton` Button type label, default: 'Button',
-* `labelNameLabel` Label type label, default: 'Label',
-* `labelForm` Form type label, default: 'Form',
-* `labelSelectOption` Select option type label, default: '- Select option -',
-* `labelOption` Option label, default: 'Option'
-* `category` Category label, default: 'Forms'
+* `blocks` Which blocks to add, default: `['form', 'input', 'textarea', 'select', 'button', 'label', 'checkbox', 'radio']` (all)
 
 
 
@@ -108,6 +78,72 @@ const editor = grapesjs.init({
 });
 ```
 
+## I18n
+
+If you need to change some of the components/traits labels, you can rely on the i18n module, here a complete example for the default `en` language
+
+```js
+editor.I18n.addMessages({
+  en: {
+    blockManager: {
+      labels: {
+        form: 'EN Form',
+        input: 'EN Input',
+        textarea: 'EN Textarea',
+        select: 'EN Select',
+        checkbox: 'EN Checkbox',
+        radio: 'EN Radio',
+        button: 'EN Button',
+        label: 'EN Label',
+      },
+      categories: {
+        forms: 'EN Forms',
+      }
+    },
+    domComponents: {
+      names: {
+        form: 'EN Form',
+        input: 'EN Input',
+        textarea: 'EN Textarea',
+        select: 'EN Select',
+        checkbox: 'EN Checkbox',
+        radio: 'EN Radio',
+        button: 'EN Button',
+        label: 'EN Label',
+      },
+    },
+    traitManager: {
+      traits: {
+        labels: {
+          method: 'EN Method',
+          action: 'EN Action',
+          name: 'EN Name',
+          placeholder: 'EN Placeholder',
+          type: 'EN Type',
+          required: 'EN Required',
+          options: 'EN Options',
+          id: 'EN Id',
+          for: 'EN For',
+          value: 'EN Value',
+          checked: 'EN Checked',
+          text: 'EN Text',
+        },
+        options: {
+          type: {
+            text: 'EN Text',
+            email: 'EN Email',
+            password: 'EN Password',
+            number: 'EN Number',
+            submit: 'EN Submit',
+            reset: 'EN Reset',
+            button: 'EN Button',
+          }
+        }
+      },
+    },
+  }
+});
+```
 
 
 ## Development
