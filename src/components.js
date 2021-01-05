@@ -247,6 +247,7 @@ export default function(editor, opt = {}) {
         text: '',
         traits: [{
           name: 'text',
+          changeProp: true,
         },{
           label: c.labelTraitType,
           type: 'select',
@@ -257,6 +258,18 @@ export default function(editor, opt = {}) {
             {value: 'button', name: c.labelTypeButton},
           ]
         }]
+      },
+
+      init() {
+        const comps = this.components();
+        const tChild =  comps.length === 1 && comps.models[0];
+        const text = (tChild && tChild.is('textnode') && tChild.get('content')) || '';
+        this.set({ text });
+        this.on('change:text', this.__onTextChange);
+      },
+
+      __onTextChange() {
+        this.components(this.get('text'));
       },
     },
 
