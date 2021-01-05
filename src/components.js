@@ -1,13 +1,14 @@
+export const typeForm = 'form';
+export const typeInput = 'input';
+export const typeTextarea = 'textarea';
+export const typeSelect = 'select';
+export const typeCheckbox = 'checkbox';
+export const typeRadio = 'radio';
+export const typeButton = 'button';
+export const typeLabel = 'label';
+
 export default function(editor, opt = {}) {
   const domc = editor.DomComponents;
-  const typeForm = 'form';
-  const typeInput = 'input';
-  const typeTextarea = 'textarea';
-  const typeSelect = 'select';
-  const typeCheckbox = 'checkbox';
-  const typeRadio = 'radio';
-  const typeButton = 'button';
-  const typeLabel = 'label';
 
   const idTrait = {
     name: 'id',
