@@ -1,34 +1,12 @@
 export default function (editor, opt = {}) {
   const trm = editor.TraitManager;
-  const textTrat = trm.getType('text');
-
-  trm.addType('content', {
-    events:{
-      'keyup': 'onChange',
-    },
-
-    onValueChange: function () {
-      var md = this.model;
-      var target = md.target;
-      target.set('content', md.get('value'));
-    },
-
-    getInputEl: function() {
-      if(!this.inputEl) {
-        this.inputEl = textTrat.prototype.getInputEl.bind(this)();
-        this.inputEl.value = this.target.get('content');
-      }
-      return this.inputEl;
-    }
-  });
-
 
   trm.addType('select-options', {
     events:{
       'keyup': 'onChange',
     },
 
-    onValueChange: function () {
+    onValueChange() {
       var optionsStr = this.model.get('value').trim();
       var options = optionsStr.split('\n');
       var optComps = [];
@@ -55,24 +33,22 @@ export default function (editor, opt = {}) {
       this.target.view.render();
     },
 
-    getInputEl: function() {
+    getInputEl() {
       if (!this.$input) {
-        var md = this.model;
-        var trg = this.target;
-        var name = md.get('name');
-        var optionsStr = '';
-        var opts = {placeholder: ''};
-        var options = trg.get('components');
+        const optionsStr = [];
+        const options = this.target.components();
 
-        for (var i = 0; i < options.length; i++) {
-          var option = options.models[i];
-          var optAttr = option.get('attributes');
-          var optValue = optAttr.value || '';
-          optionsStr += `${optValue}::${option.get('content')}\n`;
+        for (let i = 0; i < options.length; i++) {
+          const option = options.models[i];
+          const optAttr = option.get('attributes');
+          const optValue = optAttr.value || '';
+          const optTxtNode = option.components().models[0];
+          const optLabel = optTxtNode && optTxtNode.get('content') || '';
+          optionsStr.push(`${optValue}::${optLabel}`);
         }
 
         this.$input = document.createElement('textarea');
-        this.$input.value = optionsStr;
+        this.$input.value = optionsStr.join("\n");
       }
       return this.$input;
   	},

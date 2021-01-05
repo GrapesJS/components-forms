@@ -6,6 +6,7 @@ export const typeCheckbox = 'checkbox';
 export const typeRadio = 'radio';
 export const typeButton = 'button';
 export const typeLabel = 'label';
+export const typeOption = 'option';
 
 export default function(editor, opt = {}) {
   const domc = editor.DomComponents;
@@ -136,6 +137,24 @@ export default function(editor, opt = {}) {
 
 
 
+  // OPTION
+  domc.addType(typeOption, {
+    isComponent: el => el.tagName == 'OPTION',
+
+    model: {
+      defaults: {
+        tagName: 'option',
+        layerable: false,
+        droppable: false,
+      },
+    },
+  });
+  const createOption = (value, name) => ({ type: typeOption, components: name, attributes: { value } });
+
+
+
+
+
   // SELECT
   domc.addType(typeSelect, {
     extend: typeInput,
@@ -144,6 +163,10 @@ export default function(editor, opt = {}) {
     model: {
       defaults: {
         tagName: 'select',
+        components: [
+          createOption('opt1', 'Option 1'),
+          createOption('opt2', 'Option 2'),
+        ],
         traits: [
           nameTrait,
           {

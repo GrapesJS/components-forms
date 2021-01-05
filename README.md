@@ -10,6 +10,7 @@ New components:
 `input`
 `textarea`
 `select`
+`option`
 `checkbox`
 `radio`
 `button`
