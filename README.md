@@ -1,6 +1,6 @@
 # GrapesJS Forms
 
-This plugin adds some basic form components and blocks to help working with forms easier
+This plugin adds some of the basic form components and blocks which help in working with forms easier
 
 [Demo](http://grapesjs.com/demo.html)
 <br/>
