@@ -152,7 +152,7 @@ export default function(editor, opt = {}) {
     },
   });
 
-  const createOption = (value, name) => ({ type: typeOption, components: name, attributes: { value } });
+  const createOption = (value, name) => ({ type: typeOption, content: name, attributes: { value } });
 
 
 
