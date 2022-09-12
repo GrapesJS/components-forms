@@ -11,7 +11,7 @@ export const typeLabel = 'label';
 export const typeOption = 'option';
 
 export default function(editor: grapesjs.Editor) {
-  const domc = editor.DomComponents;
+  const { Components } = editor;
 
   const idTrait = {
     name: 'id',
@@ -53,7 +53,7 @@ export default function(editor: grapesjs.Editor) {
     }
   };
 
-  domc.addType(typeForm, {
+  Components.addType(typeForm, {
     isComponent: el => el.tagName == 'FORM',
 
     model: {
@@ -89,7 +89,7 @@ export default function(editor: grapesjs.Editor) {
 
 
   // INPUT
-  domc.addType(typeInput, {
+  Components.addType(typeInput, {
     isComponent: el => el.tagName == 'INPUT',
 
     model: {
@@ -129,7 +129,7 @@ export default function(editor: grapesjs.Editor) {
 
 
   // TEXTAREA
-  domc.addType(typeTextarea, {
+  Components.addType(typeTextarea, {
     extend: typeInput,
     isComponent: el => el.tagName == 'TEXTAREA',
 
@@ -151,7 +151,7 @@ export default function(editor: grapesjs.Editor) {
 
 
   // OPTION
-  domc.addType(typeOption, {
+  Components.addType(typeOption, {
     isComponent: el => el.tagName == 'OPTION',
 
     model: {
@@ -170,7 +170,7 @@ export default function(editor: grapesjs.Editor) {
 
 
   // SELECT
-  domc.addType(typeSelect, {
+  Components.addType(typeSelect, {
     extend: typeInput,
     isComponent: el => el.tagName == 'SELECT',
 
@@ -204,7 +204,7 @@ export default function(editor: grapesjs.Editor) {
 
 
   // CHECKBOX
-  domc.addType(typeCheckbox, {
+  Components.addType(typeCheckbox, {
     extend: typeInput,
     isComponent: (el) => el.tagName == 'INPUT' && (el as HTMLInputElement).type == 'checkbox',
 
@@ -242,7 +242,7 @@ export default function(editor: grapesjs.Editor) {
 
 
   // RADIO
-  domc.addType(typeRadio, {
+  Components.addType(typeRadio, {
     extend: typeCheckbox,
     isComponent: el => el.tagName == 'INPUT' && (el as HTMLInputElement).type == 'radio',
 
@@ -257,7 +257,7 @@ export default function(editor: grapesjs.Editor) {
 
 
 
-  domc.addType(typeButton, {
+  Components.addType(typeButton, {
     extend: typeInput,
     isComponent: el => el.tagName == 'BUTTON',
 
@@ -308,7 +308,7 @@ export default function(editor: grapesjs.Editor) {
 
 
   // LABEL
-  domc.addType(typeLabel, {
+  Components.addType(typeLabel, {
     extend: 'text',
     isComponent: el => el.tagName == 'LABEL',
 
