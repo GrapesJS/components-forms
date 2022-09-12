@@ -24,6 +24,7 @@ Available components:
 | --------------- | -------------------------------- | ----------------------------------------------------------------------------------------|
 |`blocks`|Which blocks to add| `['form', 'input', 'textarea', 'select', 'button', 'label', 'checkbox', 'radio']` (all) |
 |`category`|Category name|`Forms`|
+|`block`|Add custom block options, based on block id.|`(blockId) => ({})`|
 
 
 

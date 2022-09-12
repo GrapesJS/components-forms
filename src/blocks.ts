@@ -18,6 +18,8 @@ export default function (editor: grapesjs.Editor, opt: Required<PluginOptions>) 
     opts.blocks?.indexOf(id)! >= 0 && bm.add(id, {
       ...def,
       category: opts.category,
+      select: true,
+      ...opt.block(id),
     });
   }
 
