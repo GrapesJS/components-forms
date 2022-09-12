@@ -1,3 +1,5 @@
+import type grapesjs from 'grapesjs';
+
 export const typeForm = 'form';
 export const typeInput = 'input';
 export const typeTextarea = 'textarea';
@@ -8,7 +10,7 @@ export const typeButton = 'button';
 export const typeLabel = 'label';
 export const typeOption = 'option';
 
-export default function(editor) {
+export default function(editor: grapesjs.Editor) {
   const domc = editor.DomComponents;
 
   const idTrait = {
@@ -65,7 +67,7 @@ export default function(editor) {
 
     view: {
       events: {
-        submit: e => e.preventDefault(),
+        submit: (e: Event) => e.preventDefault(),
       }
     },
   });
@@ -151,7 +153,7 @@ export default function(editor) {
     },
   });
 
-  const createOption = (value, name) => ({ type: typeOption, components: name, attributes: { value } });
+  const createOption = (value: string, name: string) => ({ type: typeOption, components: name, attributes: { value } });
 
 
 
@@ -182,7 +184,7 @@ export default function(editor) {
 
     view: {
       events: {
-        mousedown: e => e.preventDefault(),
+        mousedown: (e: Event) => e.preventDefault(),
       },
     },
   });
@@ -194,7 +196,7 @@ export default function(editor) {
   // CHECKBOX
   domc.addType(typeCheckbox, {
     extend: typeInput,
-    isComponent: el => el.tagName == 'INPUT' && el.type == 'checkbox',
+    isComponent: (el) => el.tagName == 'INPUT' && (el as HTMLInputElement).type == 'checkbox',
 
     model: {
       defaults: {
@@ -212,7 +214,7 @@ export default function(editor) {
 
     view: {
       events: {
-        click: e => e.preventDefault(),
+        click: (e: Event) => e.preventDefault(),
       },
 
       init() {
@@ -220,7 +222,7 @@ export default function(editor) {
       },
 
       handleChecked() {
-        this.el.checked = !!this.model.get('attributes').checked;
+        this.el.checked = !!this.model.get('attributes')?.checked;
       },
     },
   });
@@ -232,7 +234,7 @@ export default function(editor) {
   // RADIO
   domc.addType(typeRadio, {
     extend: typeCheckbox,
-    isComponent: el => el.tagName == 'INPUT' && el.type == 'radio',
+    isComponent: el => el.tagName == 'INPUT' && (el as HTMLInputElement).type == 'radio',
 
     model: {
       defaults: {
@@ -274,7 +276,7 @@ export default function(editor) {
         const tChild =  comps.length === 1 && comps.models[0];
         const chCnt = (tChild && tChild.is('textnode') && tChild.get('content')) || '';
         const text = chCnt || this.get('text');
-        this.set({ text });
+        this.set('text', text);
         this.on('change:text', this.__onTextChange);
         (text !== chCnt) && this.__onTextChange();
       },
@@ -286,7 +288,7 @@ export default function(editor) {
 
     view: {
       events: {
-        click: e => e.preventDefault(),
+        click: (e: Event) => e.preventDefault(),
       },
     },
   });
