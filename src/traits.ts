@@ -1,14 +1,17 @@
+import type grapesjs from 'grapesjs';
 import { typeOption } from './components';
 
-export default function (editor) {
+export default function (editor: grapesjs.Editor) {
   const trm = editor.TraitManager;
 
   trm.addType('select-options', {
+    // @ts-ignore
     events:{
       keyup: 'onChange',
     },
 
     onValueChange() {
+      // @ts-ignore
       const { model, target } = this;
       const optionsStr = model.get('value').trim();
       const options = optionsStr.split('\n');
@@ -29,8 +32,10 @@ export default function (editor) {
     },
 
     getInputEl() {
+      // @ts-ignore
       if (!this.$input) {
         const optionsArr = [];
+        // @ts-ignore
         const options = this.target.components();
 
         for (let i = 0; i < options.length; i++) {
@@ -42,9 +47,12 @@ export default function (editor) {
           optionsArr.push(`${optValue}::${optLabel}`);
         }
 
+        // @ts-ignore
         this.$input = document.createElement('textarea');
+        // @ts-ignore
         this.$input.value = optionsArr.join("\n");
       }
+      // @ts-ignore
       return this.$input;
   	},
   });

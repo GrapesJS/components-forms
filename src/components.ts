@@ -1,3 +1,5 @@
+import type grapesjs from 'grapesjs';
+
 export const typeForm = 'form';
 export const typeInput = 'input';
 export const typeTextarea = 'textarea';
@@ -8,8 +10,8 @@ export const typeButton = 'button';
 export const typeLabel = 'label';
 export const typeOption = 'option';
 
-export default function(editor, opt = {}) {
-  const domc = editor.DomComponents;
+export default function(editor: grapesjs.Editor) {
+  const { Components } = editor;
 
   const idTrait = {
     name: 'id',
@@ -41,7 +43,17 @@ export default function(editor, opt = {}) {
     name: 'checked',
   };
 
-  domc.addType(typeForm, {
+  const createOption = (value: string, content: string) => {
+    return { type: typeOption, content, attributes: { value } };
+  };
+
+  const checkIfInPreview = (ev: Event) => {
+    if (!editor.Commands.isActive('preview')) {
+      ev.preventDefault();
+    }
+  };
+
+  Components.addType(typeForm, {
     isComponent: el => el.tagName == 'FORM',
 
     model: {
@@ -65,7 +77,9 @@ export default function(editor, opt = {}) {
 
     view: {
       events: {
-        submit: e => e.preventDefault(),
+        // The submit of the form might redirect the user from the editor so
+        // we should always prevent the default here.
+        submit: (e: Event) => e.preventDefault(),
       }
     },
   });
@@ -75,13 +89,12 @@ export default function(editor, opt = {}) {
 
 
   // INPUT
-  domc.addType(typeInput, {
+  Components.addType(typeInput, {
     isComponent: el => el.tagName == 'INPUT',
 
     model: {
       defaults: {
         tagName: 'input',
-        draggable: 'form, form *',
         droppable: false,
         highlightable: false,
         attributes: { type: 'text' },
@@ -116,7 +129,7 @@ export default function(editor, opt = {}) {
 
 
   // TEXTAREA
-  domc.addType(typeTextarea, {
+  Components.addType(typeTextarea, {
     extend: typeInput,
     isComponent: el => el.tagName == 'TEXTAREA',
 
@@ -138,7 +151,7 @@ export default function(editor, opt = {}) {
 
 
   // OPTION
-  domc.addType(typeOption, {
+  Components.addType(typeOption, {
     isComponent: el => el.tagName == 'OPTION',
 
     model: {
@@ -152,14 +165,12 @@ export default function(editor, opt = {}) {
     },
   });
 
-  const createOption = (value, name) => ({ type: typeOption, components: name, attributes: { value } });
-
 
 
 
 
   // SELECT
-  domc.addType(typeSelect, {
+  Components.addType(typeSelect, {
     extend: typeInput,
     isComponent: el => el.tagName == 'SELECT',
 
@@ -183,7 +194,7 @@ export default function(editor, opt = {}) {
 
     view: {
       events: {
-        mousedown: e => e.preventDefault(),
+        mousedown: checkIfInPreview,
       },
     },
   });
@@ -193,9 +204,9 @@ export default function(editor, opt = {}) {
 
 
   // CHECKBOX
-  domc.addType(typeCheckbox, {
+  Components.addType(typeCheckbox, {
     extend: typeInput,
-    isComponent: el => el.tagName == 'INPUT' && el.type == 'checkbox',
+    isComponent: (el) => el.tagName == 'INPUT' && (el as HTMLInputElement).type == 'checkbox',
 
     model: {
       defaults: {
@@ -213,7 +224,7 @@ export default function(editor, opt = {}) {
 
     view: {
       events: {
-        click: e => e.preventDefault(),
+        click: checkIfInPreview,
       },
 
       init() {
@@ -221,7 +232,7 @@ export default function(editor, opt = {}) {
       },
 
       handleChecked() {
-        this.el.checked = !!this.model.get('attributes').checked;
+        this.el.checked = !!this.model.get('attributes')?.checked;
       },
     },
   });
@@ -231,9 +242,9 @@ export default function(editor, opt = {}) {
 
 
   // RADIO
-  domc.addType(typeRadio, {
+  Components.addType(typeRadio, {
     extend: typeCheckbox,
-    isComponent: el => el.tagName == 'INPUT' && el.type == 'radio',
+    isComponent: el => el.tagName == 'INPUT' && (el as HTMLInputElement).type == 'radio',
 
     model: {
       defaults: {
@@ -246,7 +257,7 @@ export default function(editor, opt = {}) {
 
 
 
-  domc.addType(typeButton, {
+  Components.addType(typeButton, {
     extend: typeInput,
     isComponent: el => el.tagName == 'BUTTON',
 
@@ -275,7 +286,7 @@ export default function(editor, opt = {}) {
         const tChild =  comps.length === 1 && comps.models[0];
         const chCnt = (tChild && tChild.is('textnode') && tChild.get('content')) || '';
         const text = chCnt || this.get('text');
-        this.set({ text });
+        this.set('text', text);
         this.on('change:text', this.__onTextChange);
         (text !== chCnt) && this.__onTextChange();
       },
@@ -287,7 +298,7 @@ export default function(editor, opt = {}) {
 
     view: {
       events: {
-        click: e => e.preventDefault(),
+        click: checkIfInPreview,
       },
     },
   });
@@ -297,7 +308,7 @@ export default function(editor, opt = {}) {
 
 
   // LABEL
-  domc.addType(typeLabel, {
+  Components.addType(typeLabel, {
     extend: 'text',
     isComponent: el => el.tagName == 'LABEL',
 

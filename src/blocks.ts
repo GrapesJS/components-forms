@@ -1,3 +1,5 @@
+import type grapesjs from 'grapesjs';
+import { PluginOptions } from '.';
 import {
   typeForm,
   typeInput,
@@ -9,13 +11,15 @@ import {
   typeLabel,
 } from './components';
 
-export default function (editor, opt = {}) {
-  const c = opt;
+export default function (editor: grapesjs.Editor, opt: Required<PluginOptions>) {
+  const opts = opt;
   const bm = editor.BlockManager;
-  const addBlock = (id, def) => {
-    c.blocks.indexOf(id) >= 0 && bm.add(id, {
+  const addBlock = (id: string, def: grapesjs.BlockOptions) => {
+    opts.blocks?.indexOf(id)! >= 0 && bm.add(id, {
       ...def,
-      category: { id: 'forms', label: 'Forms' },
+      category: opts.category,
+      select: true,
+      ...opt.block(id),
     });
   }
 
