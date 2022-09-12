@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-plugin-forms",
-  "version": "2.0.3",
+  "version": "2.0.5",
   "description": "Set of forms components and blocks for GrapesJS editor",
   "main": "dist/index.js",
   "files": [
