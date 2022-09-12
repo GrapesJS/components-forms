@@ -43,8 +43,8 @@ export default function(editor: grapesjs.Editor) {
     name: 'checked',
   };
 
-  const createOption = (value: string, name: string) => {
-    return { type: typeOption, components: name, attributes: { value } };
+  const createOption = (value: string, content: string) => {
+    return { type: typeOption, content, attributes: { value } };
   };
 
   const checkIfInPreview = (ev: Event) => {
