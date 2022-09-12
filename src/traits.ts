@@ -52,6 +52,7 @@ export default function (editor: grapesjs.Editor) {
         // @ts-ignore
         this.$input.value = optionsArr.join("\n");
       }
+      // @ts-ignore
       return this.$input;
   	},
   });
