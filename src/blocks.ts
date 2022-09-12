@@ -11,14 +11,13 @@ import {
   typeLabel,
 } from './components';
 
-export default function (editor: grapesjs.Editor, opt: PluginOptions = {}) {
+export default function (editor: grapesjs.Editor, opt: Required<PluginOptions>) {
   const opts = opt;
   const bm = editor.BlockManager;
-  const addBlock = (id: string, def: Partial<grapesjs.BlockOptions>) => {
+  const addBlock = (id: string, def: grapesjs.BlockOptions) => {
     opts.blocks?.indexOf(id)! >= 0 && bm.add(id, {
       ...def,
-      // @ts-ignore
-      category: { id: 'forms', label: 'Forms' },
+      category: opts.category,
     });
   }
 

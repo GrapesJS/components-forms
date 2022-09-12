@@ -20,7 +20,10 @@ Available components:
 
 ## Options
 
-* `blocks` Which blocks to add, default: `['form', 'input', 'textarea', 'select', 'button', 'label', 'checkbox', 'radio']` (all)
+| Option | Description | Default|
+| --------------- | -------------------------------- | ----------------------------------------------------------------------------------------|
+|`blocks`|Which blocks to add| `['form', 'input', 'textarea', 'select', 'button', 'label', 'checkbox', 'radio']` (all) |
+|`category`|Category name|`Forms`|
 
 
 
