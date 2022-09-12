@@ -8,7 +8,7 @@ export const typeButton = 'button';
 export const typeLabel = 'label';
 export const typeOption = 'option';
 
-export default function(editor, opt = {}) {
+export default function(editor) {
   const domc = editor.DomComponents;
 
   const idTrait = {
@@ -81,7 +81,6 @@ export default function(editor, opt = {}) {
     model: {
       defaults: {
         tagName: 'input',
-        draggable: 'form, form *',
         droppable: false,
         highlightable: false,
         attributes: { type: 'text' },
