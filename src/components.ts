@@ -43,6 +43,16 @@ export default function(editor: grapesjs.Editor) {
     name: 'checked',
   };
 
+  const createOption = (value: string, name: string) => {
+    return { type: typeOption, components: name, attributes: { value } };
+  };
+
+  const checkIfInPreview = (ev: Event) => {
+    if (!editor.Commands.isActive('preview')) {
+      ev.preventDefault();
+    }
+  };
+
   domc.addType(typeForm, {
     isComponent: el => el.tagName == 'FORM',
 
@@ -67,6 +77,8 @@ export default function(editor: grapesjs.Editor) {
 
     view: {
       events: {
+        // The submit of the form might redirect the user from the editor so
+        // we should always prevent the default here.
         submit: (e: Event) => e.preventDefault(),
       }
     },
@@ -153,8 +165,6 @@ export default function(editor: grapesjs.Editor) {
     },
   });
 
-  const createOption = (value: string, name: string) => ({ type: typeOption, components: name, attributes: { value } });
-
 
 
 
@@ -184,7 +194,7 @@ export default function(editor: grapesjs.Editor) {
 
     view: {
       events: {
-        mousedown: (e: Event) => e.preventDefault(),
+        mousedown: checkIfInPreview,
       },
     },
   });
@@ -214,7 +224,7 @@ export default function(editor: grapesjs.Editor) {
 
     view: {
       events: {
-        click: (e: Event) => e.preventDefault(),
+        click: checkIfInPreview,
       },
 
       init() {
@@ -288,7 +298,7 @@ export default function(editor: grapesjs.Editor) {
 
     view: {
       events: {
-        click: (e: Event) => e.preventDefault(),
+        click: checkIfInPreview,
       },
     },
   });
