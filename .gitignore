@@ -3,6 +3,7 @@
 .sass-cache/
 .project
 .eslintrc
+.npmrc
 npm-debug.log
 style/.sass-cache/
 
