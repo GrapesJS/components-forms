@@ -1,7 +1,7 @@
-import type { Plugin, BlockProperties } from 'grapesjs';
-import loadTraits from './traits';
+import type { BlockProperties, Plugin } from 'grapesjs';
 import loadBlocks from './blocks';
 import loadComponents from './components';
+import loadTraits from './traits';
 
 export type PluginOptions = {
   /**

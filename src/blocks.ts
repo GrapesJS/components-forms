@@ -1,20 +1,20 @@
-import type grapesjs from 'grapesjs';
+import type { BlockProperties, Editor } from 'grapesjs';
 import { PluginOptions } from '.';
 import {
+  typeButton,
+  typeCheckbox,
   typeForm,
   typeInput,
-  typeTextarea,
-  typeSelect,
-  typeCheckbox,
-  typeRadio,
-  typeButton,
   typeLabel,
+  typeRadio,
+  typeSelect,
+  typeTextarea,
 } from './components';
 
-export default function (editor: grapesjs.Editor, opt: Required<PluginOptions>) {
+export default function (editor: Editor, opt: Required<PluginOptions>) {
   const opts = opt;
   const bm = editor.BlockManager;
-  const addBlock = (id: string, def: grapesjs.BlockOptions) => {
+  const addBlock = (id: string, def: BlockProperties) => {
     opts.blocks?.indexOf(id)! >= 0 && bm.add(id, {
       ...def,
       category: opts.category,
