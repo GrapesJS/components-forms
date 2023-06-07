@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/artf/grapesjs-plugin-forms.git"
+    "url": "https://github.com/GrapesJS/components-forms.git"
   },
   "keywords": [
     "grapesjs",

@@ -35,7 +35,7 @@ Available components:
 * NPM
   * `npm i grapesjs-plugin-forms`
 * GIT
-  * `git clone https://github.com/artf/grapesjs-plugin-forms.git`
+  * `git clone https://github.com/GrapesJS/components-forms.git`
 
 
 
@@ -155,7 +155,7 @@ editor.I18n.addMessages({
 Clone the repository
 
 ```sh
-$ git clone https://github.com/artf/grapesjs-plugin-forms.git
+$ git clone https://github.com/GrapesJS/components-forms.git
 $ cd grapesjs-plugin-forms
 ```
 
