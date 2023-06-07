@@ -55,7 +55,7 @@
 
 
     <script type="text/javascript">
-      setTimeout(() => {
+      window.onload = () => {
         window.editor = grapesjs.init({
           height: '100%',
           noticeOnUnload: false,
@@ -68,7 +68,7 @@
             'grapesjs-plugin-forms': {}
           }
         });
-      });
+      };
     </script>
   </body>
 </html>
