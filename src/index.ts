@@ -1,4 +1,4 @@
-import type grapesjs from 'grapesjs';
+import type { Plugin, BlockProperties } from 'grapesjs';
 import loadTraits from './traits';
 import loadBlocks from './blocks';
 import loadComponents from './components';
@@ -14,7 +14,7 @@ export type PluginOptions = {
    * Category name for blocks.
    * @default 'Forms'
    */
-   category?: grapesjs.BlockOptions["category"];
+   category?: BlockProperties["category"];
 
   /**
    * Add custom block options, based on block id.
@@ -24,8 +24,7 @@ export type PluginOptions = {
    block?: (blockId: string) => ({});
 };
 
-const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
-
+const plugin: Plugin<PluginOptions> = (editor, opts = {}) => {
   const config: Required<PluginOptions> = {
     blocks: ['form', 'input', 'textarea', 'select', 'button', 'label', 'checkbox', 'radio'],
     category: { id: 'forms', label: 'Forms' },
