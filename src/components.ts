@@ -1,4 +1,4 @@
-import type grapesjs from 'grapesjs';
+import type { Editor } from 'grapesjs';
 
 export const typeForm = 'form';
 export const typeInput = 'input';
@@ -10,7 +10,7 @@ export const typeButton = 'button';
 export const typeLabel = 'label';
 export const typeOption = 'option';
 
-export default function(editor: grapesjs.Editor) {
+export default function(editor: Editor) {
   const { Components } = editor;
 
   const idTrait = {
@@ -80,7 +80,7 @@ export default function(editor: grapesjs.Editor) {
         // The submit of the form might redirect the user from the editor so
         // we should always prevent the default here.
         submit: (e: Event) => e.preventDefault(),
-      }
+      } as any
     },
   });
 
@@ -195,7 +195,7 @@ export default function(editor: grapesjs.Editor) {
     view: {
       events: {
         mousedown: checkIfInPreview,
-      },
+      } as any,
     },
   });
 
@@ -225,14 +225,14 @@ export default function(editor: grapesjs.Editor) {
     view: {
       events: {
         click: checkIfInPreview,
-      },
+      } as any,
 
       init() {
         this.listenTo(this.model, 'change:attributes:checked', this.handleChecked);
       },
 
       handleChecked() {
-        this.el.checked = !!this.model.get('attributes')?.checked;
+        (this.el as any).checked = !!this.model.get('attributes')?.checked;
       },
     },
   });
@@ -299,7 +299,7 @@ export default function(editor: grapesjs.Editor) {
     view: {
       events: {
         click: checkIfInPreview,
-      },
+      } as any,
     },
   });
 
@@ -315,7 +315,7 @@ export default function(editor: grapesjs.Editor) {
     model: {
       defaults: {
         tagName: 'label',
-        components: 'Label',
+        components: 'Label' as any,
         traits: [forTrait],
       },
     },
