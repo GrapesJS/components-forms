@@ -171,12 +171,13 @@ export default function(editor: Editor) {
 
   // SELECT
   Components.addType(typeSelect, {
-    extend: typeInput,
     isComponent: el => el.tagName == 'SELECT',
 
     model: {
       defaults: {
         tagName: 'select',
+        droppable: false,
+        highlightable: false,
         components: [
           createOption('opt1', 'Option 1'),
           createOption('opt2', 'Option 2'),
