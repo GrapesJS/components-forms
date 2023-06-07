@@ -1,17 +1,15 @@
-import type grapesjs from 'grapesjs';
+import type { Editor } from 'grapesjs';
 import { typeOption } from './components';
 
-export default function (editor: grapesjs.Editor) {
+export default function (editor: Editor) {
   const trm = editor.TraitManager;
 
   trm.addType('select-options', {
-    // @ts-ignore
     events:{
       keyup: 'onChange',
     },
 
     onValueChange() {
-      // @ts-ignore
       const { model, target } = this;
       const optionsStr = model.get('value').trim();
       const options = optionsStr.split('\n');
@@ -28,31 +26,28 @@ export default function (editor: grapesjs.Editor) {
       }
 
       target.components().reset(optComps);
-      target.view.render();
+      target.view?.render();
     },
 
     getInputEl() {
-      // @ts-ignore
       if (!this.$input) {
         const optionsArr = [];
-        // @ts-ignore
         const options = this.target.components();
 
         for (let i = 0; i < options.length; i++) {
           const option = options.models[i];
           const optAttr = option.get('attributes');
-          const optValue = optAttr.value || '';
+          const optValue = optAttr?.value || '';
           const optTxtNode = option.components().models[0];
           const optLabel = optTxtNode && optTxtNode.get('content') || '';
           optionsArr.push(`${optValue}::${optLabel}`);
         }
 
-        // @ts-ignore
-        this.$input = document.createElement('textarea');
-        // @ts-ignore
-        this.$input.value = optionsArr.join("\n");
+        const el = document.createElement('textarea');
+        el.value = optionsArr.join("\n");
+        this.$input = el as any;
       }
-      // @ts-ignore
+
       return this.$input;
   	},
   });
